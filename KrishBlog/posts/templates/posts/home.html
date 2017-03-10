@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends './base.html' %} 
+ 
+ {% block title %}
+     home
+ {% endblock title %}
+     
+ {% csrf_token %}
+ 
+ {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<h1 class="text-center">Welcome to Krish's Blog</h1>
+{% load static %}
+<img src="{% static 'posts/main.jpg' %}" class="img-responsive center-block" style="max-height: 150px;"/>
 
-<body>
-    {% csrf_token %}
-    <h1>Welcome to Krish's Blog</h1>
+{% for post in posts.all %}
 
-    {% for post in posts.all %}
-    
-    <h3><a href="{% url 'postdetails' post.id %}">{{post.title}}</a></h3><br>
-    <span>{{post.pub_datePrettty}}</span><br>
-    <img src="{{post.image.url}}"/><br>
-    <span>{{post.summary}}</span><br>
-    {% endfor %}
-
-</body>
-
-</html>
+<h3><a href="{% url 'postdetails' post.id %}">{{post.title}}</a></h3><br>
+<span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{post.pub_datePretty}}
+<img src="{{post.image.url}}" class="img-responsive center-block" style="max-height: 150px;"/><br>
+<span>{{post.summary}}</span><br> 
+{% endfor %} 
+{% endblock content %}

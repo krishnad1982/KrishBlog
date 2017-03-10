@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends './base.html' %} {% csrf_token %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
 
-<body>
-    {% csrf_token %}
+{% block title %}
+    detials
+{% endblock title %}
 
-    <span>{{post.title}}</span><br>
-    <span>{{post.pub_datePretty}}</span><br>
-    <img src="{{post.image.url}}" alt="nil"><br>
-    <span>{{post.summary}}</span>
-</body>
+{% block content %}
 
-</html>
+<span>{{post.title}}</span><br>
+<span>{{post.pub_datePretty}}</span><br>
+<img src="{{post.image.url}}" class="img-responsive center-block" style="max-height: 1250px50px;" alt="nil"><br>
+<pre>{{post.summary}}</pre> 
+
+{% endblock content %}
