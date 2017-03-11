@@ -18,9 +18,11 @@ from django.contrib import admin
 from posts import views
 from django.conf import settings
 from django.conf.urls.static import static
+from sitepages import views as pages
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home,name="home"),
     url(r'^posts/(?P<post_id>[0-9]+)/$', views.postdetails,name="postdetails"),
+    url(r'^sitepages/', pages.about,name="about"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
